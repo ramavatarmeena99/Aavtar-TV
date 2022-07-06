@@ -1,0 +1,89 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #c7c7ca;
+}
+.logo {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.devNight {
+  font-size: 30px;
+  font-weight: 700;
+}
+.inputField {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forRedus {
+  width: 80%;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #9a5353;
+}
+.forInputField {
+  width: 90%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+input {
+  width: 100%;
+  height: 35px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  padding-left: 10px;
+  font-size: 16px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  outline: none;
+}
+.searchIcon {
+  flex: 1;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.lineSearch {
+  font-size: 25px;
+}
+.userAccount {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loginLogout {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.loginLogout:hover {
+  color: white;
+}
