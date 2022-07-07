@@ -1,0 +1,10 @@
+.color {
+  background-color: transparent;
+}
+.sideNavForMap {
+  width: 17vw;
+  height: 100%;
+  background-color: #6a6666;
+  display: flex;
+  flex-direction: column;
+}

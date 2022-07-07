@@ -1,0 +1,14 @@
+.navForMap {
+  height: 17vw;
+  height: 100vh;
+  background-color: transparent;
+}
+.vidContainer {
+  flex: 1;
+  height: 100%;
+}
+.like {
+  background-color: red;
+  flex: 1;
+  display: flex;
+}
