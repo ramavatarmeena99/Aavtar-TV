@@ -1,12 +1,10 @@
 import React from "react";
-import Header from "../Component/Header";
-import MaineBody from "../Component/MainBody";
+import PlayList from "./PlayList";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <MaineBody />
-    </>
+    <div>
+      <PlayList />
+    </div>
   );
 }

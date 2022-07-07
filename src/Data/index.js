@@ -9,26 +9,31 @@ export const Navigations = [
     id: 1,
     icon: AiFillHome,
     title: "Home",
+    route: "videoList",
   },
   {
     id: 2,
     icon: MdPlaylistPlay,
     title: "Playlists",
+    route: "playList",
   },
   {
     id: 3,
     icon: AiFillHeart,
     title: "Liked",
+    route: "liked",
   },
   {
     id: 4,
     icon: MdHistory,
     title: "History",
+    route: "history",
   },
   {
     id: 5,
     icon: MdOutlineWatchLater,
     title: "Watch Later",
+    route: "watchlater",
   },
 ];
 

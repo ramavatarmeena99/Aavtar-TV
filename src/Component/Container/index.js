@@ -17,7 +17,7 @@ export default function Container(props) {
 
   const [selectedId, setSelectedId] = useState(tabIndex || 1);
   const tabHandler = (item) => {
-    Navigate(`/${item.title}`);
+    Navigate(`/${item.route}`);
     setSelectedId(item.id);
     localStorage.setItem("tabIndex", item.id);
   };
