@@ -4,11 +4,20 @@ import VideoContainer from "../VideoContainer";
 
 import Style from "./index.module.css";
 import { Navigations } from "../../Data";
+import { useNavigate } from "react-router-dom";
 export default function Container(props) {
+  const Navigate = useNavigate();
+  // const tagHandler = (item) => {
+  //   setSelectedId(item.id);
+
+  //   // set tab index
+  //   localStorage.setItem("tabIndex", item.id);
+  // };
   const tabIndex = parseInt(localStorage.getItem("tabIndex"));
 
   const [selectedId, setSelectedId] = useState(tabIndex || 1);
   const tabHandler = (item) => {
+    Navigate(`/${item.title}`);
     setSelectedId(item.id);
     localStorage.setItem("tabIndex", item.id);
   };
