@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../Component/Header";
 import SideNavForMap from "../Component/SideNavForMap";
-import VideoContainer from "../Component/VideoContainer";
+import LikeComponent from "../Component/LikeComponent";
 import Style from "./index.module.css";
 
 export default function WatchLater() {
@@ -14,7 +14,7 @@ export default function WatchLater() {
           <SideNavForMap />
         </div>
         <div className={Style.vidContainer}>
-          <VideoContainer />
+          <LikeComponent />;
         </div>
       </div>
     </div>

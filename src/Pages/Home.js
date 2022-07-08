@@ -1,10 +1,12 @@
 import React from "react";
-import PlayList from "./PlayList";
+import Container from "../Component/Container";
+import Header from "../Component/Header";
 
 export default function Home() {
   return (
     <div>
-      <PlayList />
+      <Header />
+      <Container />
     </div>
   );
 }
