@@ -27,3 +27,18 @@
   cursor: pointer;
   color: white;
 }
+.imgDiv {
+  width: 200px;
+  height: 200px;
+}
+
+.imgFirst {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.contactMap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
