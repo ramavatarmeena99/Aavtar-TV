@@ -26,7 +26,7 @@ export default function Liked() {
             return (
               <div
                 style={{
-                  width: "100%",
+                  width: "150px",
                   height: "50px",
                   display: "flex",
                   flexDirection: "row",

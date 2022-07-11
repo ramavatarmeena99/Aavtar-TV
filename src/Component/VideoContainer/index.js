@@ -1,24 +1,14 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { TagsTitle } from "../../Data";
 import Tags from "../Tags";
 import Style from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { LikeAction } from "../../Redux/action";
-import Imgfirst from "../../Img/imgfirst.jpg";
-import Imgsecond from "../../Img/imgsecond.jpg";
-import Imgthird from "../../Img/imgthird.jpg";
-const allData = [
-  {
-    image: Imgfirst,
-  },
-  {
-    image: Imgsecond,
-  },
-  {
-    image: Imgthird,
-  },
-];
+
 export default function VideoContainer() {
+  const [mostPopularVideos, setMostPopularVideos] = useState([]);
+
   const { data } = useSelector((state) => state.likevideoReducer);
 
   const tagIndex = parseInt(localStorage.getItem("tagIndex"));
@@ -35,6 +25,27 @@ export default function VideoContainer() {
     dispatch(LikeAction(myLiked));
     alert(item.name);
   };
+
+  const getAllContestData = async () => {
+    await axios
+      .get(
+        "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=songs&maxResults=48&key=AIzaSyCcG_elmQt2JmQ-HuYobx8UcgyWesNOhOA",
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then(function (res) {
+        setMostPopularVideos(res.data.items);
+      })
+      .catch(function (error) {});
+  };
+
+  useEffect(() => {
+    getAllContestData();
+  }, []);
   return (
     <div className={Style.videoContainer}>
       <div className={Style.tags}>
@@ -55,39 +66,20 @@ export default function VideoContainer() {
         })}
       </div>
       <div className={Style.videos}>
-        {/* <div className={Style.imgDiv}>
-          <img
-            onClick={() => imgClick()}
-            className={Style.imgFirst}
-            src={Imgfirst}
-            alt="portfolio img"
-          ></img>
-        </div> */}
-        {allData.map((item) => {
+        {mostPopularVideos?.map((video, index) => {
           return (
-            <div
-              style={{
-                width: "250px",
-                height: "250px",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                backgroundColor: "red",
-                marginBottom: 20,
-              }}
-            >
-              <div className={Style.contactMap}>
-                <div className={Style.srNumber}>
-                  <img
-                    className={Style.imgFirst}
-                    src={item.image}
-                    alt="portfolio img"
-                  ></img>
+            <div className={Style.videoInfo} key={index}>
+              <div className={Style.videoPlayer}>
+                <img
+                  src={video.snippet.thumbnails.medium.url}
+                  alt={video.snippet.title}
+                  className={Style.videoImage}
+                  // we need whole thing about video so passing video
+                />
+              </div>
 
-                  <button onClick={() => imgClick(item)}>LIKED</button>
-                </div>
+              <div className={Style.channelName}>
+                <p>{video.snippet.title}</p>
               </div>
             </div>
           );
