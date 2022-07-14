@@ -1,9 +1,8 @@
 import React from "react";
-
 import Header from "../Component/Header";
 import SideNavForMap from "../Component/SideNavForMap";
-import LikeComponent from "../Component/LikeComponent";
 import Style from "./index.module.css";
+import WatchLaterComponent from "../Component/WatchlaterComponent";
 
 export default function WatchLater() {
   return (
@@ -14,7 +13,7 @@ export default function WatchLater() {
           <SideNavForMap />
         </div>
         <div className={Style.vidContainer}>
-          <LikeComponent />;
+          <WatchLaterComponent />
         </div>
       </div>
     </div>

@@ -2,9 +2,8 @@ import React from "react";
 
 import Header from "../Component/Header";
 import SideNavForMap from "../Component/SideNavForMap";
-import LikeComponent from "../Component/LikeComponent";
-
 import Style from "./index.module.css";
+import PlaylistComponent from "../Component/PlaylistComponent";
 
 export default function PlayList() {
   return (
@@ -15,7 +14,7 @@ export default function PlayList() {
           <SideNavForMap />
         </div>
         <div className={Style.vidContainer}>
-          <LikeComponent />
+          <PlaylistComponent />
         </div>
       </div>
     </div>
