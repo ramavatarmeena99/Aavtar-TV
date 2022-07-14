@@ -3,22 +3,13 @@ import React, { useEffect, useState } from "react";
 import { TagsTitle, YoutubeData } from "../../Data";
 import Tags from "../Tags";
 import Style from "./index.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LikeAction } from "../../Redux/action";
 import { BsThreeDotsVertical } from "react-icons/bs";
-// import firstImg from "../../Img/imgfirst.jpg";
-// import secondImg from "../../Img/imgsecond.jpg";
-// import thirdImg from "../../Img/imgthird.jpg";
 
 export default function VideoContainer() {
-  // const mydata = [
-  //   { videoImg: firstImg },
-  //   { videoImg: secondImg },
-  //   { videoImg: thirdImg },
-  // ];
-  // const [mostPopularVideos, setMostPopularVideos] = useState([]);
   const [isClose, setIsClose] = useState(true);
-  // const { data } = useSelector((state) => state.likevideoReducer);
+  const { data } = useSelector((state) => state.likevideoReducer);
 
   const tagIndex = parseInt(localStorage.getItem("tagIndex"));
   const dispatch = useDispatch();
@@ -29,36 +20,19 @@ export default function VideoContainer() {
     localStorage.setItem("tagIndex", item.id);
   };
 
-  const addLike = (item) => {
-    const myLiked = [...YoutubeData, item];
+  const addLike = (video) => {
+    const myLiked = [...data, video];
     dispatch(LikeAction(myLiked));
-    console.log(YoutubeData);
-    // alert(JSON.stringify(data));
+    console.log(addLike);
   };
 
-  // const getAllData = async () => {
-  //   await axios
-  //     .get(
-  //       "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=songs&maxResults=48&key=AIzaSyCcG_elmQt2JmQ-HuYobx8UcgyWesNOhOA",
-  //       {
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json; charset=UTF-8",
-  //         },
-  //       }
-  //     )
-  //     .then(function (res) {
-  //       setMostPopularVideos(res.data.items);
-  //     })
-  //     .catch(function (error) {});
-  // };
   const dotsOpen = () => {
     setIsClose(false);
   };
   const dotsClose = () => {
     setIsClose(true);
   };
-  // const addLike = () => {};
+
   useEffect(() => {}, []);
   return (
     <div className={Style.videoContainer}>
@@ -104,7 +78,10 @@ export default function VideoContainer() {
                 ) : (
                   <>
                     <div className={Style.mainuTitle}>
-                      <p onClick={addLike} className={Style.mainuconcept}>
+                      <p
+                        onClick={() => addLike(video)}
+                        className={Style.mainuconcept}
+                      >
                         Add to Playlist
                       </p>
 

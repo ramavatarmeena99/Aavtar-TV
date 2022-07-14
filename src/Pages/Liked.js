@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Liked() {
   const { data } = useSelector((state) => state.likevideoReducer);
-  console.log(data);
+
   return (
     <div>
       <Header />
@@ -15,9 +15,8 @@ export default function Liked() {
         <div className={Style.navForMap}>
           <SideNavForMap />
         </div>
-
         <div className={Style.vidContainer}>
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
               <div
                 style={{
@@ -31,16 +30,15 @@ export default function Liked() {
                 }}
               >
                 <div className={Style.contactMap}>
-                  <div className={Style.srNumber}>
+                  <div key={index} className={Style.srNumber}>
                     <img
-                      src={item.snippet?.thumbnails?.medium.url}
-                      alt={item.snippet?.title}
+                      src={item.snippet.thumbnails.medium.url}
+                      alt={item.snippet.title}
                       className={Style.imgFirst}
-                      // we need whole thing about video so passing video
                     />
                   </div>
 
-                  <p>{item.snippet?.title}</p>
+                  <p>{item.snippet.title}</p>
                 </div>
               </div>
             );
