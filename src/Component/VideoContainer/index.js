@@ -19,32 +19,44 @@ export default function VideoContainer() {
   const [selectedTag, setSelectedTag] = useState(tagIndex || 1);
   const [isClose, setIsClose] = useState("");
   const [isRemovePlaylist, setisRemovePlaylist] = useState(true);
+  const [isRemoveWatchLater, setIsRemoveWatchLater] = useState(true);
 
   const tagHandler = (item) => {
     setSelectedTag(item.id);
     localStorage.setItem("tagIndex", item.id);
   };
 
-  const addPlayList = (video) => {
-    const myPlaylist = [...playlistdata, video];
+  const addPlayList = (item) => {
+    const myPlaylist = [...playlistdata, item];
     dispatch(PlayListAction(myPlaylist));
-    setisRemovePlaylist(false);
-    setIsClose("");
-  };
-  const removeToPlaylist = (video) => {
     setisRemovePlaylist(true);
     setIsClose("");
   };
-  const addWatchLater = (video) => {
-    const myWatchLaterVideo = [...watchlaterdata, video];
+  const removeToPlaylist = (item) => {
+    setisRemovePlaylist(false);
+    setIsClose("");
+    let remainigPlaylistData = playlistdata.filter(
+      (o) => o.id.videoId !== item.id.videoId
+    );
+    dispatch(PlayListAction(remainigPlaylistData));
+  };
+  const removeToWatchLater = (item) => {
+    setIsRemoveWatchLater(false);
+    setIsClose("");
+    let remainigWatchlaterdata = watchlaterdata.filter(
+      (o) => o.id.videoId !== item.id.videoId
+    );
+    dispatch(WatchLaterAction(remainigWatchlaterdata));
+  };
+  const addWatchLater = (item) => {
+    const myWatchLaterVideo = [...watchlaterdata, item];
     dispatch(WatchLaterAction(myWatchLaterVideo));
     setIsClose("");
   };
 
-  useEffect(() => {}, []);
   return (
     <div className={Style.videoContainer}>
-      <div className={Style.tags}>
+      {/* <div className={Style.tags}>
         {TagsTitle.map((item, index) => {
           const isActiveTag = selectedTag === item.id;
           return (
@@ -60,7 +72,7 @@ export default function VideoContainer() {
             </div>
           );
         })}
-      </div>
+      </div> */}
       <div className={Style.videos}>
         {YoutubeData?.map((video, index) => {
           return (
@@ -73,7 +85,10 @@ export default function VideoContainer() {
                 setIsClose={setIsClose}
                 isClose={isClose}
                 isRemovePlaylist={isRemovePlaylist}
+                isRemoveWatchLater={isRemoveWatchLater}
                 removeToPlaylist={removeToPlaylist}
+                removeToWatchLater={removeToWatchLater}
+                setisRemovePlaylist={setisRemovePlaylist}
               />
             </div>
           );
@@ -93,10 +108,13 @@ export function Modal({
   addPlayList,
   addWatchLater,
   video,
-  isRemovePlaylist,
   removeToPlaylist,
+  removeToWatchLater,
 }) {
-  // TODO:::::need to smjahnanananana
+  const { playlistdata, watchlaterdata } = useSelector(
+    (state) => state.videoReducer
+  );
+
   const dotsOpen = () => {
     setIsClose(video.id.videoId);
   };
@@ -104,6 +122,26 @@ export function Modal({
     setIsClose("");
   };
 
+  const isAlreadyAddedInPlaylist = () => {
+    let isRemovePlaylist = playlistdata.filter(
+      (o) => o.id.videoId === video.id.videoId
+    )?.length;
+
+    if (isRemovePlaylist) {
+      return true;
+    }
+
+    return false;
+  };
+  const isAlreadyAddedInWatchLater = () => {
+    let isRemoveWatchLater = watchlaterdata.filter(
+      (o) => o.id.videoId === video.id.videoId
+    )?.length;
+    if (isRemoveWatchLater) {
+      return true;
+    }
+    return false;
+  };
   return (
     <div className={Style.dotsPosition}>
       {video.id.videoId !== isClose ? (
@@ -111,28 +149,37 @@ export function Modal({
       ) : (
         <>
           <div className={Style.mainuTitle}>
-            {isRemovePlaylist ? (
+            {isAlreadyAddedInPlaylist() ? (
+              <p
+                onClick={() => removeToPlaylist(video)}
+                className={Style.removeTo}
+              >
+                Remove to Playlist
+              </p>
+            ) : (
               <p
                 onClick={() => addPlayList(video)}
                 className={Style.mainuconcept}
               >
                 Add to Playlist
               </p>
-            ) : (
-              <p
-                onClick={() => removeToPlaylist(video)}
-                className={Style.mainuconcept}
-              >
-                Remove to Playlist
-              </p>
             )}
 
-            <p
-              onClick={() => addWatchLater(video)}
-              className={Style.mainuconcept}
-            >
-              Add to watch later
-            </p>
+            {isAlreadyAddedInWatchLater() ? (
+              <p
+                onClick={() => removeToWatchLater(video)}
+                className={Style.removeTo}
+              >
+                Remove to watch later
+              </p>
+            ) : (
+              <p
+                onClick={() => addWatchLater(video)}
+                className={Style.mainuconcept}
+              >
+                Add to watch later
+              </p>
+            )}
 
             <BsThreeDotsVertical onClick={dotsClose} className={Style.dots} />
           </div>

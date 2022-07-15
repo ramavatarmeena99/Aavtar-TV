@@ -19,21 +19,13 @@ export default function VideoPlayer(props) {
   const location = useLocation();
 
   const [isLike, setIsLike] = useState(false);
-  const [isWatchLater, setIsWatchLater] = useState(true);
+  const [isWatchLater, setIsWatchLater] = useState(false);
 
   const like = () => {
     const myLikedVideo = [...likedata, location.state.item];
     dispatch(LikeAction(myLikedVideo));
     setIsLike(true);
   };
-
-  useEffect(() => {
-    let isLiked = likedata.filter(
-      (o) => o.id.videoId === location.state.item.id.videoId
-    )?.length;
-
-    setIsLike(isLiked);
-  }, []);
 
   const disLike = () => {
     setIsLike(false);
@@ -46,13 +38,26 @@ export default function VideoPlayer(props) {
   const watchLater = () => {
     const myWatchedVideo = [...watchlaterdata, location.state.item];
     dispatch(WatchLaterAction(myWatchedVideo));
-    setIsWatchLater(false);
-    alert("Succecfully Add In Watch Later Videos");
+    setIsWatchLater(true);
   };
   const removeWatchLater = () => {
-    setIsWatchLater(true);
-    alert("Succecfully Remove to Watch Later Videos");
+    setIsWatchLater(false);
+
+    let watchlaterData = watchlaterdata.filter(
+      (o) => o.id.videoId !== location.state.item.id.videoId
+    );
+    dispatch(WatchLaterAction(watchlaterData));
   };
+  useEffect(() => {
+    let isLiked = likedata.filter(
+      (o) => o.id.videoId === location.state.item.id.videoId
+    )?.length;
+    setIsLike(isLiked);
+    let isWatchLater = watchlaterdata.filter(
+      (o) => o.id.videoId === location.state.item.id.videoId
+    )?.length;
+    setIsWatchLater(isWatchLater);
+  }, []);
   return (
     <div className={Style.videoPlayer}>
       <Header />
@@ -88,7 +93,7 @@ export default function VideoPlayer(props) {
                   <Tags tagTitle="DISLIKE" />
                 </div>
               )}
-              {isWatchLater ? (
+              {!isWatchLater ? (
                 <div onClick={() => watchLater()} className={Style.tagColor}>
                   <MdOutlineWatchLater />
                   <Tags tagTitle="WatchLater" />
@@ -103,15 +108,12 @@ export default function VideoPlayer(props) {
                 </div>
               )}
 
-              <div onClick={() => like()} className={Style.tagColor}>
+              {/* <div onClick={() => like()} className={Style.tagColor}>
                 <Tags tagTitle="Save" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
-        {/* <div className={Style.vidContainer}>
-          {playvideo.length > 0 ? null : <WatchLaterComponent />}
-        </div> */}
       </div>
     </div>
   );

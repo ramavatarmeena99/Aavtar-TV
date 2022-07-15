@@ -2,12 +2,14 @@ import React from "react";
 import Style from "./index.module.css";
 import { FiLogIn } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import { websiteName } from "../../Constant";
+const Logo = require("../../Img/logo.png");
 export default function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
-        <p className={Style.devNight}>avtarTv</p>
+        <img src={Logo} alt="avatar logo" />
+        <p className={Style.devNight}>{websiteName}</p>
       </div>
       <div className={Style.inputField}>
         <div className={Style.forRedus}>

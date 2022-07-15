@@ -60,6 +60,13 @@
 }
 .mainuconcept {
   font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+.removeTo {
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
 }
 
 .likeButton {

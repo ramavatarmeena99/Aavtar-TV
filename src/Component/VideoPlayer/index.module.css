@@ -16,6 +16,7 @@
   height: 100%;
   display: flex;
   padding-top: 10vh;
+  background-color: #121212;
 }
 .videoPlay {
   display: flex;
