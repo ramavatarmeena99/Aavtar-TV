@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { LikeAction, WatchLaterAction } from "../../Redux/action";
 import Header from "../Header";
 import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+
 import { MdOutlineWatchLater } from "react-icons/md";
 
 import SideNavForMap from "../SideNavForMap";
@@ -84,12 +86,12 @@ export default function VideoPlayer(props) {
             <div className={Style.right}>
               {!isLike ? (
                 <div onClick={() => like()} className={Style.tagColor}>
-                  <AiOutlineHeart />
+                  <AiOutlineHeart className={Style.likeIcon} />
                   <Tags tagTitle="LIKE" />
                 </div>
               ) : (
                 <div onClick={() => disLike()} className={Style.removeColor}>
-                  <AiOutlineHeart />
+                  <AiFillHeart className={Style.likeIconForDislike} />
                   <Tags tagTitle="DISLIKE" />
                 </div>
               )}

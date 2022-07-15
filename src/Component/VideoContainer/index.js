@@ -1,11 +1,15 @@
 // import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { TagsTitle, YoutubeData } from "../../Data";
-import Tags from "../Tags";
+import React, { useState } from "react";
+import { YoutubeData } from "../../Data";
+
 import Style from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { PlayListAction, WatchLaterAction } from "../../Redux/action";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdOutlineWatchLater } from "react-icons/md";
+
+import { FaRegSave } from "react-icons/fa";
+
 import MainVideoContainer from "../MaineVideoContainer";
 
 export default function VideoContainer() {
@@ -13,18 +17,18 @@ export default function VideoContainer() {
     (state) => state.videoReducer
   );
 
-  const tagIndex = parseInt(localStorage.getItem("tagIndex"));
+  // const tagIndex = parseInt(localStorage.getItem("tagIndex"));
   const dispatch = useDispatch();
 
-  const [selectedTag, setSelectedTag] = useState(tagIndex || 1);
+  // const [selectedTag, setSelectedTag] = useState(tagIndex || 1);
   const [isClose, setIsClose] = useState("");
   const [isRemovePlaylist, setisRemovePlaylist] = useState(true);
   const [isRemoveWatchLater, setIsRemoveWatchLater] = useState(true);
 
-  const tagHandler = (item) => {
-    setSelectedTag(item.id);
-    localStorage.setItem("tagIndex", item.id);
-  };
+  // const tagHandler = (item) => {
+  //   setSelectedTag(item.id);
+  //   localStorage.setItem("tagIndex", item.id);
+  // };
 
   const addPlayList = (item) => {
     const myPlaylist = [...playlistdata, item];
@@ -98,9 +102,9 @@ export default function VideoContainer() {
   );
 }
 
-let activeCss = {
-  backgroundColor: "#2235b6",
-};
+// let activeCss = {
+//   backgroundColor: "#2235b6",
+// };
 
 export function Modal({
   setIsClose,
@@ -117,9 +121,6 @@ export function Modal({
 
   const dotsOpen = () => {
     setIsClose(video.id.videoId);
-  };
-  const dotsClose = () => {
-    setIsClose("");
   };
 
   const isAlreadyAddedInPlaylist = () => {
@@ -150,38 +151,44 @@ export function Modal({
         <>
           <div className={Style.mainuTitle}>
             {isAlreadyAddedInPlaylist() ? (
-              <p
+              <div
                 onClick={() => removeToPlaylist(video)}
-                className={Style.removeTo}
+                className={Style.removeToVideo}
               >
-                Remove to Playlist
-              </p>
+                <FaRegSave className={Style.saveIconForRemove} />
+                <p className={Style.removeTo}>Remove to Playlist</p>
+              </div>
             ) : (
-              <p
+              <div
                 onClick={() => addPlayList(video)}
-                className={Style.mainuconcept}
+                className={Style.addToVideo}
               >
-                Add to Playlist
-              </p>
+                <FaRegSave className={Style.saveIcon} />
+
+                <p className={Style.mainuconcept}>Add to Playlist</p>
+              </div>
             )}
 
             {isAlreadyAddedInWatchLater() ? (
-              <p
+              <div
                 onClick={() => removeToWatchLater(video)}
-                className={Style.removeTo}
+                className={Style.removeToVideo}
               >
-                Remove to watch later
-              </p>
-            ) : (
-              <p
-                onClick={() => addWatchLater(video)}
-                className={Style.mainuconcept}
-              >
-                Add to watch later
-              </p>
-            )}
+                <MdOutlineWatchLater
+                  className={Style.watchLaterIconForRemove}
+                />
 
-            <BsThreeDotsVertical onClick={dotsClose} className={Style.dots} />
+                <p className={Style.removeTo}>Remove to watch later</p>
+              </div>
+            ) : (
+              <div
+                onClick={() => addWatchLater(video)}
+                className={Style.addToVideo}
+              >
+                <MdOutlineWatchLater className={Style.watchLaterIcon} />
+                <p className={Style.mainuconcept}>Add to watch later</p>
+              </div>
+            )}
           </div>
         </>
       )}

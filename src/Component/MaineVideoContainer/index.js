@@ -22,8 +22,8 @@ export default function MainVideoContainer(props) {
 
   return (
     <div className={Style.mainVideoContainer}>
-      <div className={Style.contactMap}>
-        <div className={Style.srNumber} onClick={redirectVideoPlayer}>
+      <div className={Style.contactMap} onClick={redirectVideoPlayer}>
+        <div className={Style.srNumber}>
           <img
             src={props.item.snippet.thumbnails.medium.url}
             alt={props.item.snippet.title}

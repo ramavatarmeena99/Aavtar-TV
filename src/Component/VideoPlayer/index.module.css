@@ -3,7 +3,7 @@
   height: 100vh;
 }
 .like {
-  background-color: aqua;
+  background-color: #0d1117;
   flex: 1;
   display: flex;
 }
@@ -47,7 +47,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 20px;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
 .tagColor {
   width: auto;
@@ -82,6 +83,7 @@
   cursor: pointer;
   color: red;
 }
-.removeColor:hover {
-  color: green;
+
+.likeIconForDislike {
+  color: red;
 }

@@ -3,13 +3,18 @@ import Style from "./index.module.css";
 import { FiLogIn } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { websiteName } from "../../Constant";
+import { Link } from "react-router-dom";
 const Logo = require("../../Img/logo.png");
 export default function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
         <img src={Logo} alt="avatar logo" />
-        <p className={Style.devNight}>{websiteName}</p>
+        <div className={Style.forTextDecoration}>
+          <Link to="/videoList">
+            <p className={Style.devNight}>{websiteName}</p>
+          </Link>
+        </div>
       </div>
       <div className={Style.inputField}>
         <div className={Style.forRedus}>

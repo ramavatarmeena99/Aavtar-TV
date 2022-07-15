@@ -26,7 +26,6 @@
   margin-bottom: 20px;
 }
 .videoTitle {
-  font-family: "Roboto", "Arial", sans-serif;
   font-size: 15px;
   font-weight: 600;
   display: -webkit-box;
@@ -35,4 +34,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  color: white;
 }
