@@ -8,7 +8,7 @@ import History from "./Pages/History";
 import PlayList from "./Pages/PlayList";
 import WatchLater from "./Pages/WatchLater";
 import Home from "./Pages/Home";
-import VideoPlayer from "./Pages/VideoPlayer";
+import VideoPlayer from "./Component/VideoPlayer";
 
 function App() {
   return (

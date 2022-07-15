@@ -9,7 +9,6 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import MainVideoContainer from "../MaineVideoContainer";
 
 export default function VideoContainer() {
-  const [isClose, setIsClose] = useState(true);
   const { playlistdata, watchlaterdata } = useSelector(
     (state) => state.videoReducer
   );
@@ -23,20 +22,17 @@ export default function VideoContainer() {
     localStorage.setItem("tagIndex", item.id);
   };
 
+  const [isClose, setIsClose] = useState("");
+
   const addPlayList = (video) => {
     const myPlaylist = [...playlistdata, video];
     dispatch(PlayListAction(myPlaylist));
+    setIsClose("");
   };
   const addWatchLater = (video) => {
     const myWatchLaterVideo = [...watchlaterdata, video];
     dispatch(WatchLaterAction(myWatchLaterVideo));
-  };
-
-  const dotsOpen = () => {
-    setIsClose(false);
-  };
-  const dotsClose = () => {
-    setIsClose(true);
+    setIsClose("");
   };
 
   useEffect(() => {}, []);
@@ -63,53 +59,14 @@ export default function VideoContainer() {
         {YoutubeData?.map((video, index) => {
           return (
             <div className={Style.videoInfo} key={index}>
-              {/* <div className={Style.videoPlayer}>
-                <img
-                  src={video.snippet.thumbnails.medium.url}
-                  alt={video.snippet.title}
-                  className={Style.videoImage}
-                  // we need whole thing about video so passing video
-                />
-              </div>
-
-              <div className={Style.channelName}>
-                <p>{video.snippet.title}</p>
-              </div> */}
-              <MainVideoContainer
-                imgSrc={video.snippet.thumbnails.medium.url}
-                videoTitle={video.snippet.title}
+              <MainVideoContainer item={video} />
+              <Modal
+                addPlayList={addPlayList}
+                addWatchLater={addWatchLater}
+                video={video}
+                setIsClose={setIsClose}
+                isClose={isClose}
               />
-              <div className={Style.dotsPosition}>
-                {isClose ? (
-                  <BsThreeDotsVertical
-                    onClick={dotsOpen}
-                    className={Style.dots}
-                  />
-                ) : (
-                  <>
-                    <div className={Style.mainuTitle}>
-                      <p
-                        onClick={() => addPlayList(video)}
-                        className={Style.mainuconcept}
-                      >
-                        Add to Playlist
-                      </p>
-
-                      <p
-                        onClick={() => addWatchLater(video)}
-                        className={Style.mainuconcept}
-                      >
-                        Add to watch later
-                      </p>
-
-                      <BsThreeDotsVertical
-                        onClick={dotsClose}
-                        className={Style.dots}
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
             </div>
           );
         })}
@@ -121,3 +78,47 @@ export default function VideoContainer() {
 let activeCss = {
   backgroundColor: "#2235b6",
 };
+
+export function Modal({
+  setIsClose,
+  isClose,
+  addPlayList,
+  addWatchLater,
+  video,
+}) {
+  // TODO:::::need to smjahnanananana
+  const dotsOpen = () => {
+    setIsClose(video.id.videoId);
+  };
+  const dotsClose = () => {
+    setIsClose("");
+  };
+
+  return (
+    <div className={Style.dotsPosition}>
+      {video.id.videoId !== isClose ? (
+        <BsThreeDotsVertical onClick={dotsOpen} className={Style.dots} />
+      ) : (
+        <>
+          <div className={Style.mainuTitle}>
+            <p
+              onClick={() => addPlayList(video)}
+              className={Style.mainuconcept}
+            >
+              Add to Playlist
+            </p>
+
+            <p
+              onClick={() => addWatchLater(video)}
+              className={Style.mainuconcept}
+            >
+              Add to watch later
+            </p>
+
+            <BsThreeDotsVertical onClick={dotsClose} className={Style.dots} />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

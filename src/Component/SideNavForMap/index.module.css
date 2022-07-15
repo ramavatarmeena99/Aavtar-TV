@@ -7,4 +7,5 @@
   background-color: #6a6666;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }

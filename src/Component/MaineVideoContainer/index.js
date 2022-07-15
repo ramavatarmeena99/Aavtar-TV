@@ -1,27 +1,37 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { HistoryAction } from "../../Redux/action";
 
 import Style from "./index.module.css";
 
 export default function MainVideoContainer(props) {
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { historydata } = useSelector((state) => state.videoReducer);
 
-  const redirectVideoPlayer = (item) => {
-    Navigate(`/videoplayer`);
+  const redirectVideoPlayer = () => {
+    const myHistoryVideo = [...historydata, props.item];
+    dispatch(HistoryAction(myHistoryVideo));
+    Navigate("/videoplayer", {
+      state: {
+        item: props.item,
+      },
+    });
   };
+
   return (
     <div className={Style.mainVideoContainer}>
       <div className={Style.contactMap}>
-        <div className={Style.srNumber}>
+        <div className={Style.srNumber} onClick={redirectVideoPlayer}>
           <img
-            src={props.imgSrc}
-            alt={props.imgSrc}
+            src={props.item.snippet.thumbnails.medium.url}
+            alt={props.item.snippet.title}
             className={Style.imgForVideo}
-            onClick={redirectVideoPlayer}
           />
         </div>
         <div className={Style.videoTitle}>
-          <p>{props.videoTitle}</p>
+          <p>{props.item.snippet.title}</p>
         </div>
       </div>
     </div>

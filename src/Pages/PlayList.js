@@ -1,5 +1,4 @@
 import React from "react";
-
 import Header from "../Component/Header";
 import SideNavForMap from "../Component/SideNavForMap";
 import Style from "./index.module.css";
@@ -17,21 +16,22 @@ export default function PlayList() {
         <div className={Style.navForMap}>
           <SideNavForMap />
         </div>
-        <div className={Style.dataForvideo}>
-          {playlistdata.map((item, index) => {
-            return (
-              <div key={index} className={Style.mainContainer}>
-                <MainVideoContainer
-                  imgSrc={item.snippet.thumbnails.medium.url}
-                  videoTitle={item.snippet.title}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div className={Style.vidContainer}>
-          {playlistdata.length > 0 ? null : <PlaylistComponent />}
-        </div>
+        {playlistdata.length > 0 ? (
+          <div className={Style.dataForvideo}>
+            {playlistdata.map((item, index) => {
+              return (
+                <div key={index} className={Style.mainContainer}>
+                  <MainVideoContainer item={item} />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={Style.vidContainer}>
+            <PlaylistComponent />
+          </div>
+        )}{" "}
+        :
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
 .forNoVideoFound {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-color: royalblue;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding-top: 10vh;
+  margin-left: 17vw;
 }
 .leftSide {
   flex: 1;

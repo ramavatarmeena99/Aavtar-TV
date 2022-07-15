@@ -3,10 +3,12 @@
   height: 90vh;
   display: flex;
   flex-direction: row;
+  padding-top: 10vh;
 }
 
 .videoContainer {
   flex: 1;
   height: 100%;
   background-color: #141319;
+  margin-left: 17vw;
 }

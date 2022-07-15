@@ -16,21 +16,22 @@ export default function WatchLater() {
         <div className={Style.navForMap}>
           <SideNavForMap />
         </div>
-        <div className={Style.dataForvideo}>
-          {watchlaterdata.map((item, index) => {
-            return (
-              <div key={index} className={Style.mainContainer}>
-                <MainVideoContainer
-                  imgSrc={item.snippet.thumbnails.medium.url}
-                  videoTitle={item.snippet.title}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div className={Style.vidContainer}>
-          {watchlaterdata.length > 0 ? null : <WatchLaterComponent />}
-        </div>
+
+        {watchlaterdata.length > 0 ? (
+          <div className={Style.dataForvideo}>
+            {watchlaterdata.map((item, index) => {
+              return (
+                <div key={index} className={Style.mainContainer}>
+                  <MainVideoContainer item={item} />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={Style.vidContainer}>
+            <WatchLaterComponent />
+          </div>
+        )}
       </div>
     </div>
   );
