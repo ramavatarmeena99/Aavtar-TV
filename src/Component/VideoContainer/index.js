@@ -4,13 +4,15 @@ import { TagsTitle, YoutubeData } from "../../Data";
 import Tags from "../Tags";
 import Style from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { LikeAction } from "../../Redux/action";
+import { PlayListAction, WatchLaterAction } from "../../Redux/action";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import MainVideoContainer from "../MaineVideoContainer";
 
 export default function VideoContainer() {
   const [isClose, setIsClose] = useState(true);
-  const { data } = useSelector((state) => state.likevideoReducer);
+  const { playlistdata, watchlaterdata } = useSelector(
+    (state) => state.videoReducer
+  );
 
   const tagIndex = parseInt(localStorage.getItem("tagIndex"));
   const dispatch = useDispatch();
@@ -21,10 +23,13 @@ export default function VideoContainer() {
     localStorage.setItem("tagIndex", item.id);
   };
 
-  const addLike = (video) => {
-    const myLiked = [...data, video];
-    dispatch(LikeAction(myLiked));
-    console.log(addLike);
+  const addPlayList = (video) => {
+    const myPlaylist = [...playlistdata, video];
+    dispatch(PlayListAction(myPlaylist));
+  };
+  const addWatchLater = (video) => {
+    const myWatchLaterVideo = [...watchlaterdata, video];
+    dispatch(WatchLaterAction(myWatchLaterVideo));
   };
 
   const dotsOpen = () => {
@@ -84,13 +89,18 @@ export default function VideoContainer() {
                   <>
                     <div className={Style.mainuTitle}>
                       <p
-                        onClick={() => addLike(video)}
+                        onClick={() => addPlayList(video)}
                         className={Style.mainuconcept}
                       >
                         Add to Playlist
                       </p>
 
-                      <p className={Style.mainuconcept}>Add to watch later</p>
+                      <p
+                        onClick={() => addWatchLater(video)}
+                        className={Style.mainuconcept}
+                      >
+                        Add to watch later
+                      </p>
 
                       <BsThreeDotsVertical
                         onClick={dotsClose}

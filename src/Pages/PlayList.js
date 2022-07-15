@@ -4,8 +4,12 @@ import Header from "../Component/Header";
 import SideNavForMap from "../Component/SideNavForMap";
 import Style from "./index.module.css";
 import PlaylistComponent from "../Component/PlaylistComponent";
+import MainVideoContainer from "../Component/MaineVideoContainer";
+import { useSelector } from "react-redux";
 
 export default function PlayList() {
+  const { playlistdata } = useSelector((state) => state.videoReducer);
+
   return (
     <div>
       <Header />
@@ -13,8 +17,20 @@ export default function PlayList() {
         <div className={Style.navForMap}>
           <SideNavForMap />
         </div>
+        <div className={Style.dataForvideo}>
+          {playlistdata.map((item, index) => {
+            return (
+              <div key={index} className={Style.mainContainer}>
+                <MainVideoContainer
+                  imgSrc={item.snippet.thumbnails.medium.url}
+                  videoTitle={item.snippet.title}
+                />
+              </div>
+            );
+          })}
+        </div>
         <div className={Style.vidContainer}>
-          <PlaylistComponent />
+          {playlistdata.length > 0 ? null : <PlaylistComponent />}
         </div>
       </div>
     </div>

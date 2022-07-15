@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from "redux";
-import likevideoReducer from "./reducers";
+import videoReducer from "./reducers";
 
 const rootReducer = combineReducers({
-  likevideoReducer: likevideoReducer,
+  videoReducer: videoReducer,
 });
 
 export const store = createStore(rootReducer);

@@ -1,16 +1,23 @@
 const initialState = {
-  data: [],
+  likedata: [],
+  watchlaterdata: [],
+  playlistdata: [],
 };
 
-const likevideoReducer = (state = initialState, action) => {
+const videoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LIKEDVIDEO": {
-      return { ...state, data: action.payload };
+      return { ...state, likedata: action.payload };
     }
-
+    case "WATCHLATERVIDEO": {
+      return { ...state, watchlaterdata: action.payload };
+    }
+    case "PLAYLISTVIDEO": {
+      return { ...state, playlistdata: action.payload };
+    }
     default:
       return state;
   }
 };
 
-export default likevideoReducer;
+export default videoReducer;

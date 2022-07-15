@@ -8,6 +8,7 @@ import History from "./Pages/History";
 import PlayList from "./Pages/PlayList";
 import WatchLater from "./Pages/WatchLater";
 import Home from "./Pages/Home";
+import VideoPlayer from "./Pages/VideoPlayer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/liked" element={<Liked />} />
           <Route path="/history" element={<History />} />
           <Route path="/watchlater" element={<WatchLater />} />
+          <Route path="/videoplayer" element={<VideoPlayer />} />
         </Routes>
       </BrowserRouter>
     </>
