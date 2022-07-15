@@ -33,33 +33,14 @@
   height: 100%;
   display: flex;
 }
-.videos {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-/* .videoInfo {
-  flex: 240px;
-  flex-basis: 240px;
-  height: auto;
-  background-color: aqua;
-  padding: 10px;
-  margin: 5px;
-} */
-/* .videoImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 5px;
-} */
+
 .dotsPosition {
   width: 100%;
   height: 20px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-end;
+  background-color: red;
 }
 .dots {
   font-size: 20px;
@@ -81,13 +62,27 @@
   font-size: 16px;
 }
 
-/* .videoPlayer {
-  width: 250px;
-  height: 300px;
-} */
 .likeButton {
   width: 100px;
   height: 30px;
   cursor: pointer;
   margin-left: 10px;
+}
+
+.videos {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: aqua;
+}
+
+.videoInfo {
+  width: 250px;
+  flex: 1;
+  flex-basis: 250px;
+  height: auto;
+  margin: 0px 5px;
+  margin-bottom: 20px;
 }

@@ -16,7 +16,18 @@ export default function Liked() {
         <div className={Style.navForMap}>
           <SideNavForMap />
         </div>
-        {/* <MainVideoContainer /> */}
+        <div className={Style.dataForvideo}>
+          {data.map((item) => {
+            return (
+              <div className={Style.mainContainer}>
+                <MainVideoContainer
+                  imgSrc={item.snippet.thumbnails.medium.url}
+                  videoTitle={item.snippet.title}
+                />
+              </div>
+            );
+          })}
+        </div>
         {data.length > 0 ? null : <LikeComponent />}
       </div>
     </div>

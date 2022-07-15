@@ -70,7 +70,10 @@ export default function VideoContainer() {
               <div className={Style.channelName}>
                 <p>{video.snippet.title}</p>
               </div> */}
-              <MainVideoContainer />
+              <MainVideoContainer
+                imgSrc={video.snippet.thumbnails.medium.url}
+                videoTitle={video.snippet.title}
+              />
               <div className={Style.dotsPosition}>
                 {isClose ? (
                   <BsThreeDotsVertical
