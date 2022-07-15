@@ -63,3 +63,24 @@
   color: white;
   cursor: pointer;
 }
+.tagColor:hover {
+  color: green;
+}
+.removeColor {
+  width: auto;
+  height: 40px;
+  background-color: #121212;
+  font-size: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+.removeColor:hover {
+  color: green;
+}

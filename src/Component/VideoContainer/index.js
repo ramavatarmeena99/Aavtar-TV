@@ -17,16 +17,22 @@ export default function VideoContainer() {
   const dispatch = useDispatch();
 
   const [selectedTag, setSelectedTag] = useState(tagIndex || 1);
+  const [isClose, setIsClose] = useState("");
+  const [isRemovePlaylist, setisRemovePlaylist] = useState(true);
+
   const tagHandler = (item) => {
     setSelectedTag(item.id);
     localStorage.setItem("tagIndex", item.id);
   };
 
-  const [isClose, setIsClose] = useState("");
-
   const addPlayList = (video) => {
     const myPlaylist = [...playlistdata, video];
     dispatch(PlayListAction(myPlaylist));
+    setisRemovePlaylist(false);
+    setIsClose("");
+  };
+  const removeToPlaylist = (video) => {
+    setisRemovePlaylist(true);
     setIsClose("");
   };
   const addWatchLater = (video) => {
@@ -66,6 +72,8 @@ export default function VideoContainer() {
                 video={video}
                 setIsClose={setIsClose}
                 isClose={isClose}
+                isRemovePlaylist={isRemovePlaylist}
+                removeToPlaylist={removeToPlaylist}
               />
             </div>
           );
@@ -85,6 +93,8 @@ export function Modal({
   addPlayList,
   addWatchLater,
   video,
+  isRemovePlaylist,
+  removeToPlaylist,
 }) {
   // TODO:::::need to smjahnanananana
   const dotsOpen = () => {
@@ -101,12 +111,21 @@ export function Modal({
       ) : (
         <>
           <div className={Style.mainuTitle}>
-            <p
-              onClick={() => addPlayList(video)}
-              className={Style.mainuconcept}
-            >
-              Add to Playlist
-            </p>
+            {isRemovePlaylist ? (
+              <p
+                onClick={() => addPlayList(video)}
+                className={Style.mainuconcept}
+              >
+                Add to Playlist
+              </p>
+            ) : (
+              <p
+                onClick={() => removeToPlaylist(video)}
+                className={Style.mainuconcept}
+              >
+                Remove to Playlist
+              </p>
+            )}
 
             <p
               onClick={() => addWatchLater(video)}

@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
-        <p className={Style.devNight}>devNight</p>
+        <p className={Style.devNight}>avtarTv</p>
       </div>
       <div className={Style.inputField}>
         <div className={Style.forRedus}>
