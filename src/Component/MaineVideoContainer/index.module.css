@@ -1,0 +1,28 @@
+.vidContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: red;
+}
+.srNumber {
+  width: 100%;
+  height: auto;
+}
+.imgFirst {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.contactMap {
+  width: 250px;
+  flex: 1;
+  flex-basis: 300px;
+  height: auto;
+
+  margin: 10px 10px;
+  margin-bottom: 20px;
+}

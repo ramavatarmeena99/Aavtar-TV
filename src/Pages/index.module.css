@@ -3,22 +3,16 @@
   height: 90vh;
   background-color: transparent;
 }
-.vidContainer {
+/* .vidContainer {
+  display: flex;
   flex: 1;
   height: 100%;
   display: flex;
-}
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
 .like {
-  background-color: red;
+  background-color: aqua;
   flex: 1;
   display: flex;
-}
-.srNumber {
-  width: 250px;
-  height: 300px;
-}
-.imgFirst {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }

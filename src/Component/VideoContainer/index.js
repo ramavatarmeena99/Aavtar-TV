@@ -6,6 +6,7 @@ import Style from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { LikeAction } from "../../Redux/action";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import MainVideoContainer from "../MaineVideoContainer";
 
 export default function VideoContainer() {
   const [isClose, setIsClose] = useState(true);
@@ -57,7 +58,7 @@ export default function VideoContainer() {
         {YoutubeData?.map((video, index) => {
           return (
             <div className={Style.videoInfo} key={index}>
-              <div className={Style.videoPlayer}>
+              {/* <div className={Style.videoPlayer}>
                 <img
                   src={video.snippet.thumbnails.medium.url}
                   alt={video.snippet.title}
@@ -68,7 +69,8 @@ export default function VideoContainer() {
 
               <div className={Style.channelName}>
                 <p>{video.snippet.title}</p>
-              </div>
+              </div> */}
+              <MainVideoContainer />
               <div className={Style.dotsPosition}>
                 {isClose ? (
                   <BsThreeDotsVertical
