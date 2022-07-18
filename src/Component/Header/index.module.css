@@ -13,8 +13,12 @@
   align-items: center;
   justify-content: center;
 }
+.avtarLogo {
+  width: auto;
+  height: 50px;
+  object-fit: cover;
+}
 .forTextDecoration {
-  list-style: none;
   text-decoration: none;
 }
 .devNight {

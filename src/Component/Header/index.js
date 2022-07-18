@@ -9,12 +9,11 @@ export default function Header() {
   return (
     <div className={Style.header}>
       <div className={Style.logo}>
-        <img src={Logo} alt="avatar logo" />
-        <div className={Style.forTextDecoration}>
-          <Link to="/videoList">
-            <p className={Style.devNight}>{websiteName}</p>
-          </Link>
-        </div>
+        <img className={Style.avtarLogo} src={Logo} alt="avatar logo" />
+
+        <Link className={Style.forTextDecoration} to="/videoList">
+          <p className={Style.devNight}>{websiteName}</p>
+        </Link>
       </div>
       <div className={Style.inputField}>
         <div className={Style.forRedus}>
