@@ -59,7 +59,7 @@ export default function VideoPlayer(props) {
       (o) => o.id.videoId === location.state.item.id.videoId
     )?.length;
     setIsWatchLater(isWatchLater);
-  });
+  },[likedata,watchlaterdata,location]);
   return (
     <div className={Style.videoPlayer}>
       <Header />
