@@ -26,3 +26,9 @@
 .maineBody {
   padding-top: 10vh;
 }
+
+@media only screen and (max-width: 600px){
+  .mainContainer {
+    width: 100%;
+  }
+}

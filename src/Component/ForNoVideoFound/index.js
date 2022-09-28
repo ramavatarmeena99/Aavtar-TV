@@ -12,7 +12,7 @@ export default function ForNoVideoFound() {
         ></img>
       </div>
       <div className={Style.rightSide}>
-        <h1 className={Style.noVideoFound}>No Videos Found :(</h1>
+        <h1 className={Style.noVideoFound}>No Videos Found :</h1>
         <p className={Style.browseVideo}>Browse Your Favorite Videos Now!</p>
         <button className={Style.watchVideo}>Watch Video</button>
       </div>

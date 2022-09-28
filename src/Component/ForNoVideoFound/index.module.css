@@ -55,3 +55,22 @@
 .watchVideo:hover {
   background-color: #2f3b8e;
 }
+
+
+@media only screen and (max-width: 600px){
+  .forNoVideoFound {
+    margin-left: 0vw;
+  }
+  .noVideoFound {
+    font-size: 20px;
+  }
+  .browseVideo {
+  font-size: 17px;
+}
+.watchVideo {
+  width: 150px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+}

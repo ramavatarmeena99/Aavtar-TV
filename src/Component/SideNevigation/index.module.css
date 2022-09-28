@@ -17,3 +17,24 @@
   font-size: 22px;
   color: white;
 }
+
+@media only screen and (max-width: 600px){
+  .sideNavi {
+  height: auto;
+    
+    flex-direction: column;
+    margin-top: 10px;
+    padding-left: 0px;
+
+  }
+  
+  .icon {
+    font-size: 20px;
+
+  }
+  .title {
+    padding-left: 0px;
+    font-size: 15px;
+    text-align: center;
+  }
+}

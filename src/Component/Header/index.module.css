@@ -96,3 +96,16 @@ input {
 .loginLogout:hover {
   color: white;
 }
+
+@media only screen and (max-width: 600px){
+  .header {
+justify-content: space-between;
+  }
+  .logo {
+padding-left: 70px;
+  }
+  .inputField {
+    display: none;
+
+  }
+}

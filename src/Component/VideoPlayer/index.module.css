@@ -87,3 +87,46 @@
 .likeIconForDislike {
   color: red;
 }
+
+
+@media only screen and (max-width: 650px){
+  .videoPlay {
+    width: 100vh;
+
+  }
+
+  iframe{
+    width: 100%;
+    height: 250px;
+  }
+  .leftForTitle {
+    padding-left: 5px;
+  }
+  .playVideoTitle {
+    width: 100%;
+    height: auto;
+
+  }
+  .videoTitle {
+    font-size: 13px;
+
+  }
+  .tagColor {
+    width: auto;
+    height: 30px;
+    font-size: 12px;
+    margin-left: 0px;
+    padding: 10px;
+  }
+  .removeColor {
+    width: auto;
+    height: 30px;
+    font-size: 12px;
+    margin-left: 0px;
+    padding: 10px;
+  }
+  .right {
+    justify-content: flex-end;
+    padding-right: 5px;
+  }
+}
