@@ -60,23 +60,6 @@ export default function VideoContainer() {
 
   return (
     <div className={Style.videoContainer}>
-      {/* <div className={Style.tags}>
-        {TagsTitle.map((item, index) => {
-          const isActiveTag = selectedTag === item.id;
-          return (
-            <div
-              onClick={() => tagHandler(item)}
-              key={index}
-              style={isActiveTag ? activeCss : {}}
-              className={Style.tagColor}
-            >
-              <React.Fragment key={index}>
-                <Tags tagTitle={item.tagTitle} />
-              </React.Fragment>
-            </div>
-          );
-        })}
-      </div> */}
       <div className={Style.videos}>
         {YoutubeData?.map((video, index) => {
           return (
