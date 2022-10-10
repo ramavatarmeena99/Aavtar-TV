@@ -5,10 +5,10 @@ To-do application for keeping to-do records of past, present and future.
 
 
 ## Features
-* - Video Listing & Single Video Page
-* - Playlist Management
-* - Filters with Categories
-* - Like/Dislike, Watch Later & History
+* Video Listing & Single Video Page
+* Playlist Management
+* Filters with Categories
+* Like/Dislike, Watch Later & History
 
 ## Technology Stack Used In This Project
 * ReactJs

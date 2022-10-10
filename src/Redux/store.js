@@ -1,8 +1,19 @@
 import { combineReducers, createStore } from "redux";
-import videoReducer from "./reducers";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
+import videoReducer from "./reducers";
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["reducers"],
+}; 
 const rootReducer = combineReducers({
   videoReducer: videoReducer,
 });
 
-export const store = createStore(rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(persistedReducer);
+export const persistor = persistStore(store);
+
