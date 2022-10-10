@@ -6,7 +6,7 @@ import videoReducer from "./reducers";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["reducers"],
+  whitelist: ["videoReducer"],
 }; 
 const rootReducer = combineReducers({
   videoReducer: videoReducer,
