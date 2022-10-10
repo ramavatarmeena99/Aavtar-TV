@@ -1,7 +1,6 @@
 ![](https://github.com/ramavatarmeena99/Avatar-TV/blob/main/src/Img/demo.png?raw=true)
 
 ## About Project
-To-do application for keeping to-do records of past, present and future.
 
 
 ## Features
