@@ -4,10 +4,12 @@ const initialState = {
   playlistdata: [],
   historydata: [],
   playvideo: [],
+
 };
 
 const videoReducer = (state = initialState, action) => {
   switch (action.type) {
+  
     case "LIKEDVIDEO": {
       return { ...state, likedata: action.payload };
     }
